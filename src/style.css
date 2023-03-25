@@ -36,6 +36,12 @@
    padding: 1em;
    border-radius: 0.7em;
    background: #181d1d;
+   outline: 0;
+   transition: all 350ms linear;
+  }
+  .card:hover {
+   outline: #2a997d 1px solid;
+   background: #141b1b;
   }
 
   h1, h2 {
