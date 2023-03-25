@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+   html {
+      scroll-behavior: smooth;
+      font-family: 'Josefin Sans', sans-serif;
+   }
+
+   body {
+      background: #191a1a;
+      color: #c0e9d8;
+   }
+   
+   header {
+      text-align: center;
+      margin-bottom: 0.25em;
+   }  
+
+   section, header {
+      margin: 2em;
+  }
+
+  section {
+   margin-top: 0;
+  }
+
+  .nav {
+   padding: 1em;
+   margin: 0;
+  }
+
+  .card {
+   margin: 0.5em;
+   padding: 1em;
+   border-radius: 0.7em;
+   background: #181d1d;
+  }
+
+  h1, h2 {
+   color: #19e9b5;
+  }
+
+  #tanggal {
+   color: #87a196;
+   margin-bottom: 6px;
+  }
+
+  .waktu {
+   margin-bottom: 0.25em;
+  }
+
+  #imsyak, #magrib {
+   color: #2a997d;
+  }
+}
