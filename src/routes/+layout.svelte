@@ -10,7 +10,7 @@
 
 <nav>
     <div class="nav">
-        <p class="font-bold">🐪 Booka</p>
+        <p class="font-bold text-md">🐪 Booka</p>
     </div>
 </nav>
 <slot />

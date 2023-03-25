@@ -37,7 +37,7 @@
             {#each data as item}
         
                 {#if item.tanggal == currentDate}
-                    <div class="card break-words whitespace-pre-line w-[40vw] h-[40vh] text-2xl md:w-[20vw]" id="today">
+                    <div class="card break-words whitespace-pre-line w-[45vw] min-h-[30vh] text-xl md:w-[20vw] shadow-md" id="today">
                         <div class="center">
                             <h2 class="font-bold text-md">Hari Ini</h2>
                             <p id="tanggal" class="text-sm italic">{item.tanggal}</p>
@@ -50,6 +50,8 @@
                                       <span>{remaining.hours} :</span>
                                       <span>{remaining.minutes} :</span>
                                       <span>{remaining.seconds} </span>
+                                      {:else}
+                                      <span>Selamat Beribadah Puasa</span>
                                       {/if}
                                     </div>
                                   </Countdown> 
@@ -73,7 +75,7 @@
                     </div>
                 {/if}
                 {#if item.tanggal == tomorowDate}
-                <div class="card break-words whitespace-pre-line w-[40vw] h-[40vh] text-2xl md:w-[20vw]" id="today">
+                <div class="card break-words whitespace-pre-line w-[30vw] min-h-[30vh] text-xl md:w-[20vw] shadow-md" id="today">
                     <div class="center">
                         <h2 class="font-bold text-md">Besok</h2>
                         <p id="tanggal" class="text-sm italic">{item.tanggal}</p>
