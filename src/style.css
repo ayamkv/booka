@@ -60,4 +60,12 @@
   #imsyak, #magrib {
    color: #2a997d;
   }
+
+  select {
+   margin: 0.25em;
+   padding:0.5em;
+   border-radius: 0.7em;
+   color: #c0e9d8;
+   background: #181d1d;
+  }
 }
