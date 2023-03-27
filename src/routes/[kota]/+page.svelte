@@ -1,5 +1,6 @@
 <script>
     export let data;
+    import { MetaTags } from 'svelte-meta-tags';
 	import { onMount } from 'svelte';
     import Countdown from '$lib/Countdown.svelte';
 	const date = new Date();
@@ -42,7 +43,35 @@
         ❤️ Booka - {kota}
     </title>
 </svelte:head>
-
+<MetaTags 
+    title="🐪 Booka | Wilayah {kota}" 
+    description="Waktu Maghrib & Imsyak Indonesia." 
+    canonical="https://raharja.eu.org/booka"
+    openGraph={{
+        url: 'https://raharja.eu.org/booka',
+        title: `🐪 Booka | Wilayah ${kota}`,
+        description: 'Waktu Maghrib & Imsyak Indonesia.',
+        images: [
+          {
+            url: 'https://i.ibb.co/Pt7SBG5/booka.png',
+            width: 800,
+            height: 600,
+            alt: '🐪'
+          }
+        ],
+        site_name: 'Booka'
+      }}
+    twitter={{
+        handle: '@freqtions',
+        site: '@freqtions',
+        cardType: 'summary_large_image',
+        title: `🐪 Booka | Wilayah ${kota}`,
+        description: 'Waktu Maghrib & Imsyak Indonesia.',
+        image: 'https://i.ibb.co/Pt7SBG5/booka.png',
+        imageAlt: '🐪'
+      }}
+    
+    />
 <header>
 	<h1 class="text-4xl font-bold ">Maghrib & Imsak</h1>
 	<p class="capitalize">Wilayah {kota}</p>
