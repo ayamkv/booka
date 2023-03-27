@@ -6,13 +6,19 @@
    html {
       scroll-behavior: smooth;
       font-family: 'Josefin Sans', sans-serif;
+      overflow-y: scroll;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none;  /* Internet Explorer and Edge */
    }
 
    body {
       background: #191a1a;
       color: #c0e9d8;
    }
-   
+   ::-webkit-scrollbar {
+      width: 0;  /* Remove scrollbar space */
+      background: transparent;  /* Optional: just make scrollbar invisible */
+  }
    header {
       text-align: center;
       margin-bottom: 0.25em;
@@ -62,10 +68,25 @@
   }
 
   select {
+   cursor: pointer;
    margin: 0.25em;
    padding:0.5em;
    border-radius: 0.7em;
    color: #c0e9d8;
    background: #181d1d;
+  }
+
+  select option {
+   cursor: pointer;
+   padding: 1em 2em;
+   border-radius: 0.7em;
+   margin-bottom: 0.25em;
+   white-space: pre-wrap;
+   -ms-overflow-style: scrollbar;
+  }
+
+  select option::-webkit-scrollbar {
+   width: 8px;
+   background: #19e9b5;
   }
 }

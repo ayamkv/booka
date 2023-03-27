@@ -1,5 +1,7 @@
 <script>
     import '../style.css'
+    import Transition from '$lib/components/Transition.svelte';
+    export let data;
 </script>
 
 <svelte:head>
@@ -10,7 +12,11 @@
 
 <nav>
     <div class="nav">
-        <p class="font-bold text-md">🐪 Booka</p>
+        <a class="font-bold text-md" href="/">🐪 Booka</a>
     </div>
 </nav>
-<slot />
+
+<Transition pathname={data.currentPath}>
+    <slot />
+</Transition>
+
