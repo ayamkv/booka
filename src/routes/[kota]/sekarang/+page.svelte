@@ -43,6 +43,7 @@
     </title>
 </svelte:head>
 
+
 <header>
 	<h1 class="text-4xl font-bold ">Maghrib & Imsak</h1>
 	<p class="capitalize">Wilayah {kota}</p>
