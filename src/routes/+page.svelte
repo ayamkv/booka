@@ -130,7 +130,7 @@
         <p class="mt-4">mohon bersabar...</p>
             {#if showSpan}
                 
-                <span class="text-gray-400" in:fade="{{delay: 3000}}" >jika tidak terload, mohon <a class="underline" href="https://www.google.com/search?q=allow+javascript&oq=allow+javascript">aktifkan/izinkan Javascript pada browser anda.</a></span>
+                <span class="text-gray-400" in:fade="{{delay: 4000}}" >jika tidak terload, mohon <a class="underline" href="https://www.google.com/search?q=allow+javascript&oq=allow+javascript">aktifkan/izinkan Javascript pada browser anda.</a></span>
          
             {/if}
         </div>
