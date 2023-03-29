@@ -1,12 +1,22 @@
 <script>
     import { MetaTags } from 'svelte-meta-tags';
+    import { fade } from 'svelte/transition'
 	import { onMount } from 'svelte';
     import Countdown from '$lib/Countdown.svelte';
 	const date = new Date();
 
+
+
+    let showSpan = false;
 	let day = date.getDate();
-	let month = date.getMonth() + 1;
+    // getMonth() method returns the month of a date as a zero-based index. This means that January is represented by 0.
+    // February by 1, etc. therefore  we need to add +1.
+	let month = date.getMonth() + 1; 
 	let year = date.getFullYear();
+
+    console.log(month);
+    console.log(date.getMonth())
+
 
 	// This arrangement can be altered based on how we want the date's format to appear.
 	let currentDate = `${year}-0${month}-${day}`;
@@ -15,7 +25,7 @@
 	let data = [];
     let listKota = [];
 ;
-    let kota = 'Lamongan';
+    let kota = 'lamongan';
     let fromCountdown
     function capitalize(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
@@ -25,7 +35,7 @@
     async function fetchData() {
         let loading = true;
         try {
-            const response = await fetch(`https://raw.githubusercontent.com/lakuapik/jadwalsholatorg/master/adzan/${kota}/2023/03.json`);
+            const response = await fetch(`https://raw.githubusercontent.com/lakuapik/jadwalsholatorg/master/adzan/${kota}/${year}/0${month}.json`);
             data = await response.json();
         } catch (error) {
             console.error(error);
@@ -36,15 +46,20 @@
 
     
     onMount(async () => {
-        // Fetch the list of kota from the URL
+       
+        const interval = setInterval(() => {
+            showSpan = true;
+            clearInterval(interval);
+        }, 200);
+
+         // Fetch the list of kota from the URL
+
         const kotaResponse = await fetch(
-            'https://raw.githubusercontent.com/lakuapik/jadwalsholatorg/master/kota.json'
+            'https://gist.githubusercontent.com/ayamkv/b469d18c4a2be9832de83cb51abbd7d8/raw/04f0a9dea7096362481ade15e60dbd5e2a3b3b5c/cities.json'
         );
         listKota = await kotaResponse.json();
 
         // Set the default kota value to the first item in the list
-        kota = listKota[128];
-
         // Fetch the data for the selected kota
         await fetchData();
 
@@ -110,19 +125,23 @@
 </header>
 <section class="min-h-[70vh] md:min-h-[60vh]">
     {#if loading}
-
     <div class="loader text-center items-center justify-center translate-y-48">
         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" class="block m-auto"><rect width="10" height="10" x="1" y="1" fill="currentColor" rx="1"><animate id="svgSpinnersBlocksShuffle30" fill="freeze" attributeName="x" begin="0;svgSpinnersBlocksShuffle3b.end" dur="0.2s" values="1;13"/><animate id="svgSpinnersBlocksShuffle31" fill="freeze" attributeName="y" begin="svgSpinnersBlocksShuffle38.end" dur="0.2s" values="1;13"/><animate id="svgSpinnersBlocksShuffle32" fill="freeze" attributeName="x" begin="svgSpinnersBlocksShuffle39.end" dur="0.2s" values="13;1"/><animate id="svgSpinnersBlocksShuffle33" fill="freeze" attributeName="y" begin="svgSpinnersBlocksShuffle3a.end" dur="0.2s" values="13;1"/></rect><rect width="10" height="10" x="1" y="13" fill="currentColor" rx="1"><animate id="svgSpinnersBlocksShuffle34" fill="freeze" attributeName="y" begin="svgSpinnersBlocksShuffle30.end" dur="0.2s" values="13;1"/><animate id="svgSpinnersBlocksShuffle35" fill="freeze" attributeName="x" begin="svgSpinnersBlocksShuffle31.end" dur="0.2s" values="1;13"/><animate id="svgSpinnersBlocksShuffle36" fill="freeze" attributeName="y" begin="svgSpinnersBlocksShuffle32.end" dur="0.2s" values="1;13"/><animate id="svgSpinnersBlocksShuffle37" fill="freeze" attributeName="x" begin="svgSpinnersBlocksShuffle33.end" dur="0.2s" values="13;1"/></rect><rect width="10" height="10" x="13" y="13" fill="currentColor" rx="1"><animate id="svgSpinnersBlocksShuffle38" fill="freeze" attributeName="x" begin="svgSpinnersBlocksShuffle34.end" dur="0.2s" values="13;1"/><animate id="svgSpinnersBlocksShuffle39" fill="freeze" attributeName="y" begin="svgSpinnersBlocksShuffle35.end" dur="0.2s" values="13;1"/><animate id="svgSpinnersBlocksShuffle3a" fill="freeze" attributeName="x" begin="svgSpinnersBlocksShuffle36.end" dur="0.2s" values="1;13"/><animate id="svgSpinnersBlocksShuffle3b" fill="freeze" attributeName="y" begin="svgSpinnersBlocksShuffle37.end" dur="0.2s" values="1;13"/></rect></svg>
         <p class="mt-4">mohon bersabar...</p>
-    </div>
+            {#if showSpan}
+                
+                <span class="text-gray-400" in:fade="{{delay: 3000}}" >jika tidak terload, mohon <a class="underline" href="https://www.google.com/search?q=allow+javascript&oq=allow+javascript">aktifkan/izinkan Javascript pada browser anda.</a></span>
+         
+            {/if}
+        </div>
         
     {:else}
     <div class="selectContainer text-center">
         
         <select bind:value={kota} on:change={handleSelectChange} class="shadow-md inline">
             {#each listKota as namaKota}
-                <option value={namaKota}>
-                            {capitalize(namaKota)}
+                <option value={namaKota.slug}>
+                            {capitalize(namaKota.text)}
                         </option>
             {/each}
             </select>
