@@ -23,15 +23,10 @@
         
 	let year = date.getFullYear();
 
-    console.log(month);
-    console.log(date.getMonth())
-
-
 	// This arrangement can be altered based on how we want the date's format to appear.
 	let currentDate = `${year}-${month}-${day}`;
 	let tomorowDate = `${year}-${month}-${tomorrowDay}`;
-	console.log(currentDate);
-    console.log(tomorowDate)
+
 	let data = [];
     let listKota = [];
     let kota = 'lamongan';
@@ -74,12 +69,12 @@
         // Fetch the data for the selected kota
         await fetchData();
 
-        console.log(data)
-
         loading = false;
     });
 
-    function handleSelectChange() {
+    let text = capitalize(kota);
+    function handleSelectChange(event) {
+        text = event.target.options[event.target.selectedIndex].text;
         fetchData();
     }
 	// onMount(async () => {
@@ -96,12 +91,12 @@
 
 <svelte:head>
     <title>
-        ❤️ Booka - {kota}
+        Booka - {text}
     </title>
 </svelte:head>
 
 <MetaTags 
-    title="Booka {capitalize(kota)}" 
+    title="Booka" 
     description="Waktu Maghrib & Imsyak Indonesia." 
     canonical="https://raharja.eu.org/booka"
     openGraph={{
@@ -132,7 +127,7 @@
 
 <header>
 	<h1 class="text-4xl font-bold ">Maghrib & Imsak</h1>
-	<p class="capitalize">Wilayah {kota}</p>
+	<p class="capitalize">Wilayah {text}</p>
     <p class="text-xs text-gray-400 italic mt-2em">nungguin ya?</p>
  
 </header>

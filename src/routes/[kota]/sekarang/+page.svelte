@@ -2,16 +2,28 @@
     export let data;
 	import { onMount } from 'svelte';
     import Countdown from '$lib/Countdown.svelte';
-	const date = new Date();
 
-	let day = date.getDate();
+    const date = new Date();
+    let tomorrow = new Date(date);
+    tomorrow.setDate(date.getDate() + 1);
+    let showSpan = false;
 	let month = date.getMonth() + 1;
+    if(month <= 9)
+        month = '0' + month;
+
+    let day= date.getDate();
+    if(day <= 9)
+        day = day.toString().padStart(2, '0');
+
+    let tomorrowDay = tomorrow.getDate().toString().padStart(2, '0');
+
+        
 	let year = date.getFullYear();
 
 	// This arrangement can be altered based on how we want the date's format to appear.
-	let currentDate = `${year}-0${month}-${day}`;
-	let tomorowDate = `${year}-0${month}-${day + 1}`;
-	console.log(currentDate);
+	let currentDate = `${year}-${month}-${day}`;
+
+    console.log(currentDate)
     let listKota = [];
 
     let kota = data.kota;
@@ -62,8 +74,8 @@
 	<div class="grid grid-cols-1 grid-row-2 md:gap-[-60em]">
         <div class="flex flex-wrap justify-center">
             {#each adzan as item}
-        
                 {#if item.tanggal == currentDate}
+                     
                     <div class="card break-words whitespace-pre-line w-[50vw] min-h-[35vh] text-xl md:w-[20vw] shadow-md" id="today">
                         <div class="center">
                             <h2 class="font-bold text-md">Hari Ini</h2>

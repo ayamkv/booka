@@ -26,16 +26,30 @@
     let listKota = [];
 
     let kota = data.kota;
+    
     let fromCountdown
     function capitalize(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
     let loading = true; 
+    function getTextBySlug(data, slug) {
+        for (let i = 0; i < data.length; i++) {
+            if (data[i].slug === slug) {
 
+            text = data[i].text;
+            return data[i].text;
+            }
+        }
+        return null; // If no match is found, return null
+        }
+        
+    
+    let text = kota;
     let adzan = []
     adzan = data.adzan
 
     onMount(async () => {
+        getTextBySlug(data, kota);
         loading = false;
     });
 	// onMount(async () => {
@@ -50,16 +64,16 @@
 
 <svelte:head>
     <title>
-        ❤️ Booka - {kota}
+        Wilayah {text}
     </title>
 </svelte:head>
 <MetaTags 
-    title="🐪 Booka | Wilayah {kota}" 
+    title="Wilayah {text}" 
     description="Waktu Maghrib & Imsyak Indonesia." 
     canonical="https://raharja.eu.org/booka"
     openGraph={{
         url: 'https://raharja.eu.org/booka',
-        title: `🐪 Booka | Wilayah ${kota}`,
+        title: `🐪 Booka | Wilayah ${text}`,
         description: 'Waktu Maghrib & Imsyak Indonesia.',
         images: [
           {
@@ -75,7 +89,7 @@
         handle: '@freqtions',
         site: '@freqtions',
         cardType: 'summary_large_image',
-        title: `🐪 Booka | Wilayah ${kota}`,
+        title: `🐪 Booka | Wilayah ${text}`,
         description: 'Waktu Maghrib & Imsyak Indonesia.',
         image: 'https://i.ibb.co/Pt7SBG5/booka.png',
         imageAlt: '🐪'
@@ -84,7 +98,7 @@
     />
 <header>
 	<h1 class="text-4xl font-bold ">Maghrib & Imsak</h1>
-	<p class="capitalize">Wilayah {kota}</p>
+	<p class="capitalize">Wilayah {text}</p>
     <p class="text-xs text-gray-400 italic mt-2em">nungguin ya?</p>
  
 </header>
