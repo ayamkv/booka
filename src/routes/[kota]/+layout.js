@@ -19,7 +19,7 @@ export const load = async ({ route, params, fetch, url }) => {
   console.log(route.id);
   
   const fetchData = async () => {
-    const res = await fetch(`https://raw.githubusercontent.com/lakuapik/jadwalsholatorg/master/adzan/${params.kota}/${year}/${month}.json`);
+    const res = await fetch(`https://raw.githubusercontent.com/ayamkv/jadwalsholatorg/master/adzan/${params.kota}/${year}/${month}.json`);
     const dataRes = await res.json();
     console.log(dataRes)
     return dataRes;
