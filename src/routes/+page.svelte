@@ -39,7 +39,7 @@
     async function fetchData() {
         let loading = true;
         try {
-            const response = await fetch(`https://raw.githubusercontent.com/ayamkv/jadwalsholatorg/master/adzan/${kota}/${year}/${month}.json`);
+            const response = await fetch(`https://raw.githubusercontent.com/lakuapik/jadwalsholatorg/master/adzan/${kota}/${year}/${month}.json`);
             data = await response.json();
         } catch (error) {
             console.error(error);
