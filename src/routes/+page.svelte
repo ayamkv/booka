@@ -59,7 +59,7 @@
          // Fetch the list of kota from the URL
 
         const kotaResponse = await fetch(
-            'https://cdn.statically.io/gist/ayamkv/b469d18c4a2be9832de83cb51abbd7d8/raw/04f0a9dea7096362481ade15e60dbd5e2a3b3b5c/cities.json'
+            'https://gist.githubusercontent.com/ayamkv/b469d18c4a2be9832de83cb51abbd7d8/raw'
         );
         listKota = await kotaResponse.json();
 
